@@ -500,6 +500,7 @@ class GTTrain:
         self.tv.column("Name", minwidth=2)
 
 
+<<<<<<< HEAD
         self.tv.heading("Size", text="Size", anchor='w')
         self.tv.column("Size",  minwidth=2)
 
@@ -664,6 +665,10 @@ class GTTrain:
     #==========search Animals Window================
 
 >>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+=======
+    #==========search Animals Window================
+
+>>>>>>> d7ee54ebf890a0157773fb5f6512ba7999d72664
     def createSearchAnimalWindow(self):
         self.searchAnimalWindow = Toplevel()
         self.searchAnimalWindow.title("Search for Animal")
@@ -740,6 +745,7 @@ class GTTrain:
         viewAnimalType = Label(searchAnimalWindow, text="Type", font="Verdana 10 bold ")
         viewAnimalType.grid(row=5, column=5, )
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         # Animal Type  Drop Down Box
         ##不确定是不是这么写 从后端database调用
@@ -864,6 +870,10 @@ class GTTrain:
         showDateLabel.grid(row=7, column=1)
 
         # Exhibit Drop Down Button
+=======
+
+        # Animal Type  Drop Down Box
+>>>>>>> d7ee54ebf890a0157773fb5f6512ba7999d72664
         ##不确定是不是这么写 从后端database调用
         # ExhibitTuple = self.cursor.fetchall()
 
@@ -871,7 +881,68 @@ class GTTrain:
         # for i in ExhibitTuple:
         #     ExhibitList.append(i[0])
 
+<<<<<<< HEAD
 >>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+=======
+        typeList = ['Fish', 'Frog', 'Lion']
+
+        self.Type = StringVar()
+        self.Type.set(typeList[0])
+
+        typeMenu = OptionMenu(searchAnimalWindow, self.Type, *typeList)
+        typeMenu.grid(row=5, column=7)
+
+        # Search Button
+        searchButton = Button(searchAnimalWindow, text="Search", command=self.searchResultTable)
+        searchButton.grid(row=7, column=4)
+
+
+    #=============  Animal searchResultTable Table==============
+
+    def searchResultTable(self):
+        return True
+
+    #============== search Show Window ==============
+
+    def createSearchShowWindow(self):
+        self.searchShowWindow = Toplevel()
+        self.searchShowWindow.title("Search for Show")
+
+    def buildSearchShowWindow(self, searchShowWindow):
+
+        # viewZoo label
+        viewZooLabel = Label(searchShowWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # viewShow label
+        viewShowLabel = Label(searchShowWindow, text="Shows", font="Verdana 10 bold ")
+        viewShowLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Show Name label
+        ShowNameLabel = Label(searchShowWindow, text="Name", font="Verdana 10 bold ")
+        ShowNameLabel.grid(row=5, column=1)
+
+        self.showName = StringVar()
+        nameEntry = Entry(searchShowWindow, textvariable=self.showName, width=10)
+        nameEntry.grid(row=5, column=3, sticky=W + E)
+
+        # Show Date label
+        showDateLabel = Label(searchShowWindow, text="Date", font="Verdana 10 bold ")
+        showDateLabel.grid(row=5, column=5)
+
+        # Show Exhibit Label
+        showDateLabel = Label(searchShowWindow, text="Date", font="Verdana 10 bold ")
+        showDateLabel.grid(row=7, column=1)
+
+        # Exhibit Drop Down Button
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+>>>>>>> d7ee54ebf890a0157773fb5f6512ba7999d72664
 
         ExhibitList = ['Pacific', 'Jungle', 'Ocean']
 
@@ -1086,6 +1157,7 @@ class GTTrain:
         #
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         # self.departureDateSV = StringVar()
         # self.departureDateSV.set("yyyy-mm-dd")
         # departureDateEntry = Entry(searchTrainWindow, textvariable=self.departureDateSV, width=20)
@@ -1094,6 +1166,8 @@ class GTTrain:
 =======
 =======
 >>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+=======
+>>>>>>> d7ee54ebf890a0157773fb5f6512ba7999d72664
         # Animal Min Max Label
         minLabel = Label(searchStaffAnimalWindow, text="MIN", font="Verdana 10 bold ")
         minLabel.grid(row=2, column=7)
@@ -1103,6 +1177,75 @@ class GTTrain:
 
         selectMinAge = Spinbox(searchStaffAnimalWindow, from_=0, to=100, width=5)
         selectMinAge.grid(row=3, column=7)
+<<<<<<< HEAD
+=======
+
+        selectMaxAge = Spinbox(searchStaffAnimalWindow, from_=0, to=100, width=5)
+        selectMaxAge.grid(row=3, column=8)
+
+        # Animal Species label
+        viewZooLabel = Label(searchStaffAnimalWindow, text="Species", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=5, column=1)
+
+        # Animal species Entry
+        self.species = StringVar()
+        speciesEntry = Entry(searchStaffAnimalWindow, textvariable=self.species, width=10)
+        speciesEntry.grid(row=5, column=3, sticky=W + E)
+
+        # Animal Type label
+        viewAnimalType = Label(searchStaffAnimalWindow, text="Type", font="Verdana 10 bold ")
+        viewAnimalType.grid(row=5, column=5, )
+
+        # Animal Type  Drop Down Box
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+        typeList = ['Fish', 'Frog', 'Lion']
+
+        self.Type = StringVar()
+        self.Type.set(typeList[0])
+
+        typeMenu = OptionMenu(searchStaffAnimalWindow, self.Type, *typeList)
+        typeMenu.grid(row=5, column=7)
+
+        # Search Button
+        searchButton = Button(searchStaffAnimalWindow, text="Search", command=self.searchResultTable)
+        searchButton.grid(row=7, column=4)
+
+
+
+    #================Search  Staff Show ===========================
+
+    def createSearchStaffShowsWindow(self):
+        self.searchStaffShowsWindow = Toplevel()
+        self.searchStaffShowsWindow.title("exhibit History")
+
+    def buildSearchStaffShowsWinodw(self,searchStaffShowsWindow):
+        # viewZoo label
+        viewZooLabel = Label(searchStaffShowsWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # viewAnimal label
+        viewAnimalLabel = Label(searchStaffShowsWindow, text="   Staff- Show Historry", font="Verdana 10 bold ")
+        viewAnimalLabel.grid(row=1, column=3, sticky=W + E)
+
+    #=================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+
+    #=========View Train Schedule Window============
+>>>>>>> d7ee54ebf890a0157773fb5f6512ba7999d72664
 
         selectMaxAge = Spinbox(searchStaffAnimalWindow, from_=0, to=100, width=5)
         selectMaxAge.grid(row=3, column=8)
