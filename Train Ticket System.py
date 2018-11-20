@@ -274,7 +274,7 @@ class GTTrain:
 
         # Search for animals
         logOutButton = Button(chooseFunctionalityWindow, text="search for animals",
-                              command=self.chooseFunctionalityWindowLogOutButtonClicked)
+                              command=self.searchAnimals)
         logOutButton.grid(row=7, column=1)
 
 
@@ -304,6 +304,11 @@ class GTTrain:
 
         self.createSearchExhibitWindow()
         self.buildSearchExhibitWindow(self.searchExhibitWindow)
+        self.chooseFunctionalityWindow.withdraw()
+
+    def searchAnimals(self):
+        self.createSearchAnimalWindow()
+        self.buildSearchAnimalWinodw(self.searchAnimalWindow)
         self.chooseFunctionalityWindow.withdraw()
 
     def chooseFunctionalityWindowViewTrainScheduleLabelClicked(self,event):
@@ -366,16 +371,52 @@ class GTTrain:
 
     def buildSearchExhibitWindow(self,searchExhibitWindow):
         # Title Label
-        viewTrainScheduleLabel = Label(searchExhibitWindow, text="Exhibits", font="Verdana 10 bold ")
-        viewTrainScheduleLabel.grid(row=1, column=3, sticky=W + E)
+        viewExhibitLabel = Label(searchExhibitWindow, text="Exhibits", font="Verdana 10 bold ")
+        viewExhibitLabel.grid(row=1, column=3, sticky=W + E)
 
         # Title Label 2
-        viewTrainScheduleLabel = Label(searchExhibitWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
-        viewTrainScheduleLabel.grid(row=2, column=1, )
+        viewZooLabel = Label(searchExhibitWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=2, column=1, )
 
         # Search Button
         searchButton = Button(searchExhibitWindow, text="Search", command=self.viewTrainScheduleSearchButtonClicked)
         searchButton.grid(row=2, column=5)
+
+#==========search Animals================
+    def createSearchAnimalWindow(self):
+        self.searchAnimalWindow = Toplevel()
+        self.searchAnimalWindow.title("Search for Animal")
+
+    def buildSearchAnimalWinodw(self,searchAnimalWindow):
+        # Title Label
+        viewAnimalLabel = Label(searchAnimalWindow, text="Animals", font="Verdana 10 bold ")
+        viewAnimalLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Title Label 2
+        viewZooLabel = Label(searchAnimalWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # Search Button
+        searchButton = Button(searchAnimalWindow, text="Search", command=self.viewTrainScheduleSearchButtonClicked)
+        searchButton.grid(row=2, column=5)
+
+        # Animal Name Label
+        viewZooLabel = Label(searchAnimalWindow, text="Name", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=3, column=1, )
+
+        # Animal Name Entry
+        self.animalName = StringVar()
+        nameEntry = Entry(searchAnimalWindow, textvariable=self.loginPassword, show='*', width=10)
+        nameEntry.grid(row=3, column=3, sticky=W + E)
+
+        # Animal Speciese label
+        viewZooLabel = Label(searchAnimalWindow, text="Name", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=4, column=1, )
+
+        # Animal Name Entry
+        self.species = StringVar()
+        speciesEntry = Entry(searchAnimalWindow, textvariable=self.loginPassword, show='*', width=10)
+        speciesEntry.grid(row=4, column=3, sticky=W + E)
 
 
 #=========View Train Schedule Window============
