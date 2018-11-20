@@ -9,8 +9,8 @@ class GTTrain:
     def __init__(self):
         # Invoke createLoginWindow; Invoke buildLoginWindow, Set loginWindow as mainloop
         #Connect to the database
-        self.db = self.connect()
-        self.cursor = self.db.cursor()
+        # self.db = self.connect()
+        # self.cursor = self.db.cursor()
         # Login Window
         self.createLoginWindow()
         self.buildLoginWindow(self.loginWindow)
@@ -381,6 +381,44 @@ class GTTrain:
         # Search Button
         searchButton = Button(searchExhibitWindow, text="Search", command=self.viewTrainScheduleSearchButtonClicked)
         searchButton.grid(row=2, column=5)
+
+        #name lable
+        nameLabel = Label(searchExhibitWindow, text = "Name", font = "Verdana 10 bold")
+        nameLabel.grid(row=3, column = 1)
+
+        # name entry
+        self.nameEntry = StringVar()
+        name = Entry(searchExhibitWindow, textvariable=self.nameEntry, width=20)
+        name.grid(row=3, column=2, sticky=W + E)
+
+        # num animals label
+        numAnimalsLabel = Label(searchExhibitWindow, text = "Num Animals", font="Verdana 10 bold")
+        numAnimalsLabel.grid(row=3, column=3)
+
+        # min num animal
+
+
+        # max num animal
+
+        # size label
+        sizeLabel = Label(searchExhibitWindow, text = "Size", font = "Verdana 10 bold")
+        sizeLabel.grid(row=4, column=1)
+
+        # min size
+
+        # max size
+
+        # water feature label
+        waterLabel = Label(searchExhibitWindow, text = "Water Feature", font = "Verdana 10 bold")
+        waterLabel.grid(row=4, column=3)
+
+        # water feature drop down menu
+        var = StringVar()
+        var.set("Yes")
+        lst = ["Yes", "No"]
+        optionbutton = OptionMenu(searchExhibitWindow, var, *lst)
+        optionbutton.grid(row=4, column=4)
+
 
 #==========search Animals================
     def createSearchAnimalWindow(self):
