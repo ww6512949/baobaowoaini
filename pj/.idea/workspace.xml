@@ -2,32 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9cc3283-1d2b-45e6-97ff-4816ebe6edf9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Create table statement.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Guidelines for populating the database.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../IFD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Project Description v1.0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Relational Schema.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SQL task statement.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Train Ticket System.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/activate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/activate.csh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/activate.fish" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/easy_install" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/easy_install-3.7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/pip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/pip3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/pip3.7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/python" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/python3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bin/python3.7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../buzzImage.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../localhost.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pip-selfcheck.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pyvenv.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../zoo.png" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Train Ticket System.py" beforeDir="false" afterPath="$PROJECT_DIR$/Train Ticket System.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,12 +59,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="78" />
+          <entry key="py" value="2533" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="78" />
+          <entry key="Python" value="2533" />
         </counts>
       </usages-collector>
     </session>
@@ -96,10 +74,41 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Train Ticket System.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="461" column="33" lean-forward="true" selection-start-line="461" selection-start-column="33" selection-end-line="461" selection-end-column="33" />
+            <state relative-caret-position="270">
+              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#226#570#0" />
+                <element signature="e#644#1160#0" />
+                <element signature="e#1215#2792#0" />
+                <element signature="e#2848#4692#0" />
+                <element signature="e#4750#5099#0" />
+                <element signature="e#5208#5360#0" />
+                <element signature="e#5444#5490#0" />
+                <element signature="e#13109#13255#0" />
+                <element signature="e#13416#13553#0" />
+                <element signature="e#13592#13723#0" />
+                <element signature="e#13733#13861#0" />
+                <element signature="e#13523#13886#0" />
+                <element signature="e#13523#13586#0" />
+                <element signature="e#13975#14343#0" />
+                <element signature="e#13975#14040#0" />
+                <element signature="e#14430#14588#0" />
+                <element signature="e#14675#14836#0" />
+                <element signature="e#14915#15052#0" />
+                <element signature="e#15131#15268#0" />
+                <element signature="e#15372#15715#0" />
+                <element signature="e#15785#16003#0" />
+                <element signature="e#15785#15840#0" />
+                <element signature="e#16098#16196#0" />
+                <element signature="e#16270#17943#0" />
+                <element signature="e#16878#16973#0" />
+                <element signature="e#21829#21927#0" />
+                <element signature="e#21937#23555#0" />
+                <element signature="e#23893#23990#0" />
+                <element signature="e#24059#25795#0" />
+                <element signature="e#26183#27676#0" />
+                <element signature="e#28173#28332#0" />
               </folding>
             </state>
           </provider>
@@ -113,6 +122,7 @@
       <find>loginwindow</find>
       <find>loginPassword</find>
       <find>anima</find>
+      <find>stationnametuple</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,11 +136,28 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="x" value="24" />
     <option name="y" value="34" />
     <option name="width" value="1400" />
     <option name="height" value="766" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyCompatibilityInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -246,16 +273,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="34" width="1400" height="766" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16823785" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16349542" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" auto_hide="true" id="Run" order="2" weight="0.2537092" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" visible="true" weight="0.26626506" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39910978" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -281,10 +308,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Train Ticket System.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
-          <caret line="461" column="33" lean-forward="true" selection-start-line="461" selection-start-column="33" selection-end-line="461" selection-end-column="33" />
+        <state relative-caret-position="270">
+          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#226#570#0" />
+            <element signature="e#644#1160#0" />
+            <element signature="e#1215#2792#0" />
+            <element signature="e#2848#4692#0" />
+            <element signature="e#4750#5099#0" />
+            <element signature="e#5208#5360#0" />
+            <element signature="e#5444#5490#0" />
+            <element signature="e#13109#13255#0" />
+            <element signature="e#13416#13553#0" />
+            <element signature="e#13592#13723#0" />
+            <element signature="e#13733#13861#0" />
+            <element signature="e#13523#13886#0" />
+            <element signature="e#13523#13586#0" />
+            <element signature="e#13975#14343#0" />
+            <element signature="e#13975#14040#0" />
+            <element signature="e#14430#14588#0" />
+            <element signature="e#14675#14836#0" />
+            <element signature="e#14915#15052#0" />
+            <element signature="e#15131#15268#0" />
+            <element signature="e#15372#15715#0" />
+            <element signature="e#15785#16003#0" />
+            <element signature="e#15785#15840#0" />
+            <element signature="e#16098#16196#0" />
+            <element signature="e#16270#17943#0" />
+            <element signature="e#16878#16973#0" />
+            <element signature="e#21829#21927#0" />
+            <element signature="e#21937#23555#0" />
+            <element signature="e#23893#23990#0" />
+            <element signature="e#24059#25795#0" />
+            <element signature="e#26183#27676#0" />
+            <element signature="e#28173#28332#0" />
           </folding>
         </state>
       </provider>
