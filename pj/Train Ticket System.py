@@ -5,6 +5,7 @@ from tkinter import messagebox
 from tkinter import ttk
 from datetime import datetime, timedelta
 import decimal
+
 class GTTrain:
     def __init__(self):
         # Invoke createLoginWindow; Invoke buildLoginWindow, Set loginWindow as mainloop
@@ -129,8 +130,6 @@ class GTTrain:
         self.newUserRegistrationWindow = Toplevel()
         self.newUserRegistrationWindow.title("Atlanta zoo")
 
-
-
     def buildNewUserRegistrationWindow(self,newUserRegistrationWindow):
         # Add components for newUserRegistrationWindow
 
@@ -230,13 +229,18 @@ class GTTrain:
         self.newUserRegistrationWindow.destroy()
 
     def newStaffCreateButtonClicked(self):
-            return True
-##==========Choose Functionality Window================
+        messagebox.showinfo("info", "Register successfully!")
+        self.createStaffChooseFunctionalityWindow()
+        self.buildStaffChooseFunctionalityWindow(self.chooseStaffFunctionalityWindow)
+        self.newUserRegistrationWindow.destroy()
+
+
+##==========Visitor Choose Functionality Window================
 
     def createChooseFunctionalityWindow(self):
         # Create blank chooseFunctionalityWindow
         self.chooseFunctionalityWindow = Toplevel()
-        self.chooseFunctionalityWindow.title("Train Sales System")
+        self.chooseFunctionalityWindow.title("Atlanta Zoo : User")
 
     def buildChooseFunctionalityWindow(self,chooseFunctionalityWindow):
         # Add component to chooseFunctionalityWindow
@@ -248,34 +252,34 @@ class GTTrain:
         chooseFunctionalityLabel.grid(row=1, column=2, sticky=W+E)
 
         # Search Exhibit
-        logOutButton = Button(chooseFunctionalityWindow, text="search Exhibit",
+        searchExhibitWindow = Button(chooseFunctionalityWindow, text="search Exhibit",
                               command=self.searchExhibit)
-        logOutButton.grid(row=3, column=1)
+        searchExhibitWindow.grid(row=3, column=1)
 
+        # search shows
+        searchShowsWindow = Button(chooseFunctionalityWindow, text="Search Shows",
+                              command=self.searchShows)
+        searchShowsWindow.grid(row=5, column=1)
 
         # view exhibit history
         # Search Exhibit
-        logOutButton = Button(chooseFunctionalityWindow, text="view exhibit history",
-                              command=self.chooseFunctionalityWindowLogOutButtonClicked)
-        logOutButton.grid(row=3, column=3)
+        exhibitHistory = Button(chooseFunctionalityWindow, text="view exhibit history",
+                              command=self.exhibitHistory)
+        exhibitHistory.grid(row=3, column=3)
 
 
-        # search shows
-        logOutButton = Button(chooseFunctionalityWindow, text="Search Shows",
-                              command=self.chooseFunctionalityWindowLogOutButtonClicked)
-        logOutButton.grid(row=5, column=1)
 
         # view show history
 
-        logOutButton = Button(chooseFunctionalityWindow, text="view show history",
-                              command=self.chooseFunctionalityWindowLogOutButtonClicked)
-        logOutButton.grid(row=5, column=3)
+        showHistory = Button(chooseFunctionalityWindow, text="view show history",
+                              command=self.showHistory)
+        showHistory.grid(row=5, column=3)
 
 
         # Search for animals
-        logOutButton = Button(chooseFunctionalityWindow, text="search for animals",
+        searchAnimals = Button(chooseFunctionalityWindow, text="search for animals",
                               command=self.searchAnimals)
-        logOutButton.grid(row=7, column=1)
+        searchAnimals.grid(row=7, column=1)
 
 
         # # View Review Label
@@ -311,6 +315,21 @@ class GTTrain:
         self.buildSearchAnimalWinodw(self.searchAnimalWindow)
         self.chooseFunctionalityWindow.withdraw()
 
+    def searchShows(self):
+        self.createSearchShowWindow()
+        self.buildSearchShowWindow(self.searchShowWindow)
+        self.chooseFunctionalityWindow.withdraw()
+    def exhibitHistory(self):
+        self.createExhibitHistory()
+        self.buildExhibitHistory(self.exhibitHistoryWindow)
+        self.chooseFunctionalityWindow.withdraw()
+
+    def showHistory(self):
+        self.createShowHistory()
+        self.buildShowHistory(self.showHistoryWindow)
+        self.chooseFunctionalityWindow.withdraw()
+
+
     def chooseFunctionalityWindowViewTrainScheduleLabelClicked(self,event):
         # Click ViewTrainSchedule Label on Choose Functionality Window:
         # Invoke createViewTrainScheduleWindow(); Invoke buildViewTrainScheduleWindow();
@@ -318,7 +337,6 @@ class GTTrain:
         self.createViewTrainScheduleWindow()
         self.buildViewTrainScheduleWindow(self.viewTrainScheduleWindow)
         self.chooseFunctionalityWindow.withdraw()
-
 
     def chooseFunctionalityWindowMakeANewReservationLabelClicked(self,event):
         # Click MakeANewReservation Label on Choose Functionality Window:
@@ -363,11 +381,43 @@ class GTTrain:
         # Display Login Window
         self.chooseFunctionalityWindow.destroy()
         self.loginWindow.deiconify()
-#=========search Exhibit Window============
+
+    #=========search Exhibit Window============
 
     def createSearchExhibitWindow(self):
         self.searchExhibitWindow = Toplevel()
         self.searchExhibitWindow.title("Search for Exhibit")
+
+    def viewExhibitButtonClicked(self):
+        # search table
+        self.tv = ttk.Treeview(self.searchExhibitWindow)
+        self.tv['columns'] = ("Name", "Size", "NumAnimals", "Water")
+
+        self.tv.heading("Name", text='Name', anchor='w')
+        self.tv.column("Name", minwidth=2)
+
+        self.tv.heading("Size", text="Size", anchor='w')
+        self.tv.column("Size", minwidth=2)
+
+        self.tv.heading("NumAnimals", text="NumAnimals")
+        self.tv.column("NumAnimals", minwidth=2)
+
+        self.tv.heading("Water", text="Water")
+        self.tv.column("Water", minwidth=2)
+
+        self.tv['show'] = 'headings'
+        self.tv.grid(row=7, column=3, columnspan=3)
+
+        # get data from server
+        self.tv.insert("", 0, text="Line 1", values=("1A", "1b", "3c", "laji"))
+        self.tv.insert("", 1, text="Line 2", values=("2B"))
+        self.tv.insert("", 2, text="Line 3", values=("3A"))
+        self.tv.insert("", 3, text="Line 4", values=("4A"))
+        self.tv.insert("", 4, text="Line 5", values=("3A"))
+
+        #click
+        self.tv.bind("<Double-1>", self.onClick)
+
 
     def buildSearchExhibitWindow(self,searchExhibitWindow):
         # Title Label
@@ -379,64 +429,274 @@ class GTTrain:
         viewZooLabel.grid(row=2, column=1, )
 
         # Search Button
-        searchButton = Button(searchExhibitWindow, text="Search", command=self.viewTrainScheduleSearchButtonClicked)
+        searchButton = Button(searchExhibitWindow, text="Search", command=self.viewExhibitButtonClicked)
         searchButton.grid(row=2, column=5)
 
-        #name lable
+        # min label
+        minLabel = Label(searchExhibitWindow, text = "Min", font = "Verdana 10 bold")
+        minLabel.grid(row=3, column = 6)
+
+        # max label
+        maxLabel = Label(searchExhibitWindow, text = "Max", font = "Verdana 10 bold")
+        maxLabel.grid(row=3, column = 7)
+
+        #name label
         nameLabel = Label(searchExhibitWindow, text = "Name", font = "Verdana 10 bold")
-        nameLabel.grid(row=3, column = 1)
+        nameLabel.grid(row=4, column = 1)
 
         # name entry
         self.nameEntry = StringVar()
-        name = Entry(searchExhibitWindow, textvariable=self.nameEntry, width=20)
-        name.grid(row=3, column=2, sticky=W + E)
+        name = Entry(searchExhibitWindow, textvariable=self.nameEntry, width=10)
+        name.grid(row=4, column=2, sticky=W + E)
 
         # num animals label
-        numAnimalsLabel = Label(searchExhibitWindow, text = "Num Animals", font="Verdana 10 bold")
-        numAnimalsLabel.grid(row=3, column=3)
+        numAnimalsLabel = Label(searchExhibitWindow, text="Num Animals", font="Verdana 10 bold")
+        numAnimalsLabel.grid(row=4, column=5)
 
         # min num animal
-
+        minanimal = Spinbox(searchExhibitWindow, from_=0, to_=100, width=5)
+        minanimal.grid(row=4, column=6)
 
         # max num animal
+        maxanimal = Spinbox(searchExhibitWindow, from_=0, to_=100, width=5)
+        maxanimal.grid(row=4, column=7)
 
         # size label
-        sizeLabel = Label(searchExhibitWindow, text = "Size", font = "Verdana 10 bold")
-        sizeLabel.grid(row=4, column=1)
+        sizelabel = Label(searchExhibitWindow, text = "Size", font="Verdana 10 bold")
+        sizelabel.grid(row=6, column =1)
+
+        # max size label
+        maxsizeLabel = Label(searchExhibitWindow, text = "Max", font = "Verdana 10 bold")
+        maxsizeLabel.grid(row=5, column=3)
+
+        # min size label
+        minsizeLabel = Label(searchExhibitWindow, text = "Min", font = "Verdana 10 bold")
+        minsizeLabel.grid(row=5, column=2)
 
         # min size
+        minsize = Spinbox(searchExhibitWindow, from_=0, to_=1000, width=5)
+        minsize.grid(row=6, column=2)
 
         # max size
+        maxsize = Spinbox(searchExhibitWindow, from_=0, to_=1000, width=5)
+        maxsize.grid(row=6, column=3)
 
         # water feature label
         waterLabel = Label(searchExhibitWindow, text = "Water Feature", font = "Verdana 10 bold")
-        waterLabel.grid(row=4, column=3)
+        waterLabel.grid(row=6, column=5)
 
         # water feature drop down menu
         var = StringVar()
         var.set("Yes")
         lst = ["Yes", "No"]
         optionbutton = OptionMenu(searchExhibitWindow, var, *lst)
-        optionbutton.grid(row=4, column=4)
+        optionbutton.grid(row=6, column=6)
+
+        # search table
+        self.tv = ttk.Treeview(searchExhibitWindow)
+        self.tv['columns'] = ("Name", "Size", "NumAnimals", "Water")
+
+        self.tv.heading("Name", text='Name', anchor='w')
+        self.tv.column("Name", minwidth=2)
 
 
-#==========search Animals================
+        self.tv.heading("Size", text="Size", anchor='w')
+        self.tv.column("Size",  minwidth=2)
+
+        self.tv.heading("NumAnimals", text="NumAnimals")
+        self.tv.column("NumAnimals", minwidth=2)
+
+        self.tv.heading("Water", text="Water")
+        self.tv.column("Water",  minwidth=2)
+
+        self.tv['show'] = 'headings'
+        self.tv.grid(row=7, column=3, columnspan = 3  )
+
+
+
+    def onClick(self,event):
+        region = self.tv.identify_region( event.x, event.y)
+        if region=="heading":
+            column = self.tv.identify_column(event.x)
+            self.treeview_sort_column(self.tv, column, False)
+        elif region=="cell":
+            # row = self.tv.identify_row(event.y)
+            # print(row)
+            # name = self.tv.identify_element(row,"Name")
+            # print(name)
+            curItem = self.tv.item(self.tv.focus())
+            name = curItem['values'][0]
+            size = curItem['values'][1]
+            NumAnimals = curItem['values'][2]
+            WaterFeature = curItem['values'][3]
+            self.createExhibitDetailWindow()
+            self.buildExhibitDetailWindow(self.ExhibitDetailWindow,name,size,NumAnimals,WaterFeature)
+            self.searchExhibitWindow.withdraw()
+
+
+    def treeview_sort_column(self,tv,col, reverse):
+        l = [(tv.set(k, col), k) for k in tv.get_children('')]
+        l.sort(reverse=reverse)
+
+        # rearrange items in sorted positions
+        for index, (val, k) in enumerate(l):
+            tv.move(k, '', index)
+
+        # reverse sort next time
+        tv.heading(col, command=lambda: \
+           self.treeview_sort_column(self.tv, col, not reverse))
+
+    #==========Exhibit Detail================
+    def createExhibitDetailWindow(self):
+        self.ExhibitDetailWindow= Toplevel()
+        self.ExhibitDetailWindow.title("Exhibit Detail")
+
+    def buildExhibitDetailWindow(self, ExhibitDetailWindow,name,size,numAnimals,waterFeature):
+        #title label
+        label = Label(ExhibitDetailWindow, text= "Exhibit Detail", font="Verdana 10 bold")
+        label.grid(row=1, column=2)
+
+        #zoo label
+        label = Label(ExhibitDetailWindow, text= "Atlanta Zoo", font="Verdana 10 bold")
+        label.grid(row=2, column=1)
+
+        #Name Label
+        label = Label(ExhibitDetailWindow, text= "Name: "+ name, font="Verdana 10 bold")
+        label.grid(row=3, column=1)
+
+        #size label
+        label = Label(ExhibitDetailWindow, text= "Size: "+ size, font="Verdana 10 bold")
+        label.grid(row=3, column=2)
+
+        #num animals label
+        label = Label(ExhibitDetailWindow, text= "Num Animals: "+ numAnimals, font="Verdana 10 bold")
+        label.grid(row=3, column=3)
+
+        # water feature
+        label = Label(ExhibitDetailWindow, text= "Water Feature: "+ waterFeature, font="Verdana 10 bold")
+        label.grid(row=3, column=4)
+
+        # Search Button
+        logVisitButton = Button(ExhibitDetailWindow, text="Log Visit", command=self.logVisitClicked)
+        logVisitButton.grid(row=4, column=2)
+
+        # search table
+        self.tv = ttk.Treeview(self.ExhibitDetailWindow)
+        self.tv['columns'] = ("Name", "Species")
+
+        self.tv.heading("Name", text='Name', anchor='w')
+        self.tv.column("Name", minwidth=1)
+
+        self.tv.heading("Species", text="Species", anchor='w')
+        self.tv.column("Species", minwidth=1)
+
+        self.tv['show'] = 'headings'
+        self.tv.grid(row=7, column=2, columnspan=1)
+
+        # get data from server
+        self.tv.insert("", 0, text="Line 1", values=("1A", "1b", "3c"))
+        self.tv.insert("", 1, text="Line 2", values=("2B"))
+        self.tv.insert("", 2, text="Line 3", values=("3A"))
+        self.tv.insert("", 3, text="Line 4", values=("4A"))
+        self.tv.insert("", 4, text="Line 5", values=("3A"))
+
+        # click
+        self.tv.bind("<Double-1>", self.animalDetailOnClicked)
+
+    def animalDetailOnClicked(self,event):
+        region = self.tv.identify_region( event.x, event.y)
+        if region=="cell":
+            curItem = self.tv.item(self.tv.focus())
+            name = curItem['values'][0]
+            species = curItem['values'][1]
+            self.createAnimalDetailWindow()
+            self.buildAnimalDetailWindow(self.AnimalDetailWindow,name,species)
+            self.searchExhibitWindow.withdraw()
+
+    def logVisitClicked(self):
+        return True
+
+    #==========Animals Detail================
+    def createAnimalDetailWindow(self):
+        self.AnimalDetailWindow = Toplevel()
+        self.AnimalDetailWindow.title("Animal Detail")
+
+    def buildAnimalDetailWindow(self, AnimalDetailWindow, name, species):
+        #title label
+        label = Label(AnimalDetailWindow, text= "Animal Detail", font="Verdana 10 bold")
+        label.grid(row=1, column=2)
+
+        # zoo label
+        label = Label(AnimalDetailWindow, text="Atlanta Zoo", font="Verdana 10 bold")
+        label.grid(row=2, column=1)
+
+        # Name Label
+        label = Label(AnimalDetailWindow, text="Name: " + name, font="Verdana 10 bold")
+        label.grid(row=3, column=1)
+
+        # species label
+        label = Label(AnimalDetailWindow, text="Species: "+species, font="Verdana 10 bold")
+        label.grid(row=3, column=2)
+
+        # age label
+        label = Label(AnimalDetailWindow, text="Age:  " + " ", font="Verdana 10 bold")
+        label.grid(row=3, column=3)
+
+<<<<<<< HEAD
+        # Exhibit label
+        label = Label(AnimalDetailWindow, text="Exhibit: " + " ", font="Verdana 10 bold")
+        label.grid(row=4, column=1)
+
+        # type label
+        label = Label(AnimalDetailWindow, text="Type: " + " ", font="Verdana 10 bold")
+        label.grid(row=4, column=2)
+
+
+
+
+<<<<<<< HEAD
+    #==========search Animals================
+=======
+    #==========search Animals Window================
+
+>>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+=======
+    #==========search Animals Window================
+
+>>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
     def createSearchAnimalWindow(self):
         self.searchAnimalWindow = Toplevel()
         self.searchAnimalWindow.title("Search for Animal")
 
     def buildSearchAnimalWinodw(self,searchAnimalWindow):
-        # Title Label
-        viewAnimalLabel = Label(searchAnimalWindow, text="Animals", font="Verdana 10 bold ")
-        viewAnimalLabel.grid(row=1, column=3, sticky=W + E)
 
-        # Title Label 2
+        # viewZoo label
         viewZooLabel = Label(searchAnimalWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
         viewZooLabel.grid(row=1, column=1, )
 
-        # Search Button
-        searchButton = Button(searchAnimalWindow, text="Search", command=self.viewTrainScheduleSearchButtonClicked)
-        searchButton.grid(row=2, column=5)
+        # viewAnimal label
+        viewAnimalLabel = Label(searchAnimalWindow, text="Animals", font="Verdana 10 bold ")
+        viewAnimalLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Exhibit label
+        viewZooLabel = Label(searchAnimalWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=5, )
+
+        # Exhibit Drop Down Button
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+        ExhibitList = [1, 2, 3]
+
+        self.Exhibit = StringVar()
+        self.Exhibit.set(ExhibitList[0])
+
+        departsFromOptionMenu = OptionMenu(searchAnimalWindow, self.Exhibit, *ExhibitList)
+        departsFromOptionMenu.grid(row=1, column=7)
 
         # Animal Name Label
         viewZooLabel = Label(searchAnimalWindow, text="Name", font="Verdana 10 bold ")
@@ -447,16 +707,41 @@ class GTTrain:
         nameEntry = Entry(searchAnimalWindow, textvariable=self.animalName, width=10)
         nameEntry.grid(row=3, column=3, sticky=W + E)
 
-        # Animal Speciese label
-        viewZooLabel = Label(searchAnimalWindow, text="Species", font="Verdana 10 bold ")
-        viewZooLabel.grid(row=4, column=1, )
+        # Animal Age Label
+        viewAge = Label(searchAnimalWindow, text="Age", font="Verdana 10 bold ")
+        viewAge.grid(row=3, column=5 )
 
-        # Animal Name Entry
+        # Animal Age Select
+        # Don't know
+        #
+        # Animal Min Max Label
+        minLabel = Label(searchAnimalWindow, text="MIN", font="Verdana 10 bold ")
+        minLabel.grid(row=2, column=7)
+
+        maxLabel = Label(searchAnimalWindow, text="MAX", font="Verdana 10 bold ")
+        maxLabel.grid(row=2, column=8)
+
+        selectMinAge = Spinbox(searchAnimalWindow, from_=0, to=100, width=5)
+        selectMinAge.grid(row=3, column=7)
+
+        selectMaxAge = Spinbox(searchAnimalWindow, from_=0, to=100, width=5)
+        selectMaxAge.grid(row=3, column=8)
+
+        # Animal Species label
+        viewZooLabel = Label(searchAnimalWindow, text="Species", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=5, column=1)
+
+        # Animal species Entry
         self.species = StringVar()
         speciesEntry = Entry(searchAnimalWindow, textvariable=self.species,  width=10)
-        speciesEntry.grid(row=4, column=3, sticky=W + E)
+        speciesEntry.grid(row=5, column=3, sticky=W + E)
 
-        # Drop Down Button
+        # Animal Type label
+        viewAnimalType = Label(searchAnimalWindow, text="Type", font="Verdana 10 bold ")
+        viewAnimalType.grid(row=5, column=5, )
+<<<<<<< HEAD
+
+        # Animal Type  Drop Down Box
         ##不确定是不是这么写 从后端database调用
         # ExhibitTuple = self.cursor.fetchall()
 
@@ -464,29 +749,474 @@ class GTTrain:
         # for i in ExhibitTuple:
         #     ExhibitList.append(i[0])
 
-        ExhibitList = [1,2,3]
+        typeList = ['Fish', 'Frog', 'Lion']
+
+        self.Type = StringVar()
+        self.Type.set(typeList[0])
+
+        typeMenu = OptionMenu(searchAnimalWindow, self.Type, *typeList)
+        typeMenu.grid(row=5, column=7)
+
+        # Search Button
+        searchButton = Button(searchAnimalWindow, text="Search", command=self.searchResultTable)
+        searchButton.grid(row=7, column=4)
+
+
+    #=============  Animal searchResultTable Table==============
+
+    def searchResultTable(self):
+        return True
+
+    #============== search Show Window ==============
+
+    def createSearchShowWindow(self):
+        self.searchShowWindow = Toplevel()
+        self.searchShowWindow.title("Search for Show")
+
+    def buildSearchShowWindow(self, searchShowWindow):
+
+        # viewZoo label
+        viewZooLabel = Label(searchShowWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # viewShow label
+        viewShowLabel = Label(searchShowWindow, text="Shows", font="Verdana 10 bold ")
+        viewShowLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Show Name label
+        ShowNameLabel = Label(searchShowWindow, text="Name", font="Verdana 10 bold ")
+        ShowNameLabel.grid(row=5, column=1)
+
+        self.showName = StringVar()
+        nameEntry = Entry(searchShowWindow, textvariable=self.showName, width=10)
+        nameEntry.grid(row=5, column=3, sticky=W + E)
+
+        # Show Date label
+        showDateLabel = Label(searchShowWindow, text="Date", font="Verdana 10 bold ")
+        showDateLabel.grid(row=5, column=5)
+
+        # Show Exhibit Label
+        showDateLabel = Label(searchShowWindow, text="Date", font="Verdana 10 bold ")
+        showDateLabel.grid(row=7, column=1)
+
+        # Exhibit Drop Down Button
+=======
+
+        # Animal Type  Drop Down Box
+>>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+<<<<<<< HEAD
+=======
+        typeList = ['Fish', 'Frog', 'Lion']
+
+        self.Type = StringVar()
+        self.Type.set(typeList[0])
+
+        typeMenu = OptionMenu(searchAnimalWindow, self.Type, *typeList)
+        typeMenu.grid(row=5, column=7)
+
+        # Search Button
+        searchButton = Button(searchAnimalWindow, text="Search", command=self.searchResultTable)
+        searchButton.grid(row=7, column=4)
+
+
+    #=============  Animal searchResultTable Table==============
+
+    def searchResultTable(self):
+        return True
+
+    #============== search Show Window ==============
+
+    def createSearchShowWindow(self):
+        self.searchShowWindow = Toplevel()
+        self.searchShowWindow.title("Search for Show")
+
+    def buildSearchShowWindow(self, searchShowWindow):
+
+        # viewZoo label
+        viewZooLabel = Label(searchShowWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # viewShow label
+        viewShowLabel = Label(searchShowWindow, text="Shows", font="Verdana 10 bold ")
+        viewShowLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Show Name label
+        ShowNameLabel = Label(searchShowWindow, text="Name", font="Verdana 10 bold ")
+        ShowNameLabel.grid(row=5, column=1)
+
+        self.showName = StringVar()
+        nameEntry = Entry(searchShowWindow, textvariable=self.showName, width=10)
+        nameEntry.grid(row=5, column=3, sticky=W + E)
+
+        # Show Date label
+        showDateLabel = Label(searchShowWindow, text="Date", font="Verdana 10 bold ")
+        showDateLabel.grid(row=5, column=5)
+
+        # Show Exhibit Label
+        showDateLabel = Label(searchShowWindow, text="Date", font="Verdana 10 bold ")
+        showDateLabel.grid(row=7, column=1)
+
+        # Exhibit Drop Down Button
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+>>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+
+        ExhibitList = ['Pacific', 'Jungle', 'Ocean']
 
         self.Exhibit = StringVar()
         self.Exhibit.set(ExhibitList[0])
 
-        departsFromOptionMenu = OptionMenu(searchAnimalWindow, self.Exhibit, *ExhibitList)
-        departsFromOptionMenu.grid(row=1, column=5)
+        departsFromOptionMenu = OptionMenu(searchShowWindow, self.Exhibit, *ExhibitList)
+        departsFromOptionMenu.grid(row=7, column=3)
 
-        # self.arrivesAtSV = StringVar()
-        # self.arrivesAtSV.set(stationNameList[0])
+        # Search Button
+        searchButton = Button(searchShowWindow, text="Search", command=self.showResult)
+        searchButton.grid(row=7, column=4)
+
+    #===========Show Result===============
+
+    def showResult(self):
+            return  True
+
+    #==========exhibit History=============
+
+    def createExhibitHistory(self):
+        self.exhibitHistoryWindow = Toplevel()
+        self.exhibitHistoryWindow.title("exhibit History")
+
+    def buildExhibitHistory(self,exhibitHistoryWindow):
+
+        # Title Label
+        viewExhibitLabel = Label(exhibitHistoryWindow, text = "Exhibits History", font = "Verdana 10 bold ")
+        viewExhibitLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Title Label 2
+        viewZooLabel = Label(exhibitHistoryWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=2, column=1, )
+
+        # name lable
+        nameLabel = Label(exhibitHistoryWindow, text="Name", font="Verdana 10 bold")
+        nameLabel.grid(row=3, column=1)
+
+        # name entry
+        self.nameEntry = StringVar()
+        name = Entry(exhibitHistoryWindow, textvariable=self.nameEntry, width=20)
+        name.grid(row=3, column=2, sticky=W + E)
+
+        # num Visits label
+        numAnimalsLabel = Label(exhibitHistoryWindow, text="Num Animals", font="Verdana 10 bold")
+        numAnimalsLabel.grid(row=3, column=3)
+
+        # min num visits
+        # max num visits
+        minLabel = Label(exhibitHistoryWindow, text="MIN", font="Verdana 10 bold ")
+        minLabel.grid(row=2, column=4)
+
+        maxLabel = Label(exhibitHistoryWindow, text="MAX", font="Verdana 10 bold ")
+        maxLabel.grid(row=2, column=5)
+
+        selectMinAge = Spinbox(exhibitHistoryWindow, from_=0, to=100, width=5)
+        selectMinAge.grid(row=3, column=4)
+
+        selectMaxAge = Spinbox(exhibitHistoryWindow, from_=0, to=100, width=5)
+        selectMaxAge.grid(row=3, column=5)
+
+        # Time label
+        sizeLabel = Label(exhibitHistoryWindow, text="Time", font="Verdana 10 bold")
+        sizeLabel.grid(row=4, column=1)
+
+
+        # Search Button
+        searchButton = Button(exhibitHistoryWindow, text="Search", command=self.viewTrainScheduleSearchButtonClicked)
+        searchButton.grid(row=4, column=4)
+
+    #===========show History=========================
+    def createShowHistory(self):
+        self.showHistoryWindow = Toplevel()
+        self.showHistoryWindow.title("exhibit History")
+
+    def buildShowHistory(self, showHistoryWindow):
+        # Title Label
+        viewExhibitLabel = Label(showHistoryWindow, text="Show History", font="Verdana 10 bold ")
+        viewExhibitLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Title Label 2
+        viewZooLabel = Label(showHistoryWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=2, column=1, )
+
+        # name lable
+        nameLabel = Label(showHistoryWindow, text="Name", font="Verdana 10 bold")
+        nameLabel.grid(row=3, column=1)
+
+        # name entry
+        self.nameEntry = StringVar()
+        name = Entry(showHistoryWindow, textvariable=self.nameEntry, width=20)
+        name.grid(row=3, column=2, sticky=W + E)
+
+        # name lable
+        nameLabel = Label(showHistoryWindow, text="Exhibit", font="Verdana 10 bold")
+        nameLabel.grid(row=3, column=3)
+
+        # Exhibit Drop Down Button
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+        ExhibitList = ['Pacific', 'Jungle', 'Ocean']
+
+        self.Exhibit = StringVar()
+        self.Exhibit.set(ExhibitList[0])
+
+        departsFromOptionMenu = OptionMenu(showHistoryWindow, self.Exhibit, *ExhibitList)
+        departsFromOptionMenu.grid(row=3, column=4)
+
+        # Time label
+        sizeLabel = Label(showHistoryWindow, text="Time", font="Verdana 10 bold")
+        sizeLabel.grid(row=4, column=1)
+
+        # Search Button
+        searchButton = Button(showHistoryWindow, text="Search", command=self.viewTrainScheduleSearchButtonClicked)
+        searchButton.grid(row=4, column=4)
+
+
+#== StaffChoseFunctionalityTable =========================
+
+    def createStaffChooseFunctionalityWindow(self):
+
+        # Create blank chooseFunctionalityWindow
+        self.chooseStaffFunctionalityWindow = Toplevel()
+        self.chooseStaffFunctionalityWindow.title("Atlanta Zoo : Staff")
+
+
+    def buildStaffChooseFunctionalityWindow(self,chooseStaffFunctionalityWindow):
+
+        chooseStaffFunctionalityLabel = Label(chooseStaffFunctionalityWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        chooseStaffFunctionalityLabel.grid(row=1, column=2, sticky=W + E)
+
+        # Search Animal
+        searchStaffExhibitWindow = Button(chooseStaffFunctionalityWindow, text="search Animals",
+                                     command=self.searchStaffAnimal)
+        searchStaffExhibitWindow.grid(row=2, column=1)
+
+        # view shows
+        searchStaffShowsWindow = Button(chooseStaffFunctionalityWindow, text="View Shows",
+                                   command=self.searchStaffShows)
+        searchStaffShowsWindow.grid(row=2, column=2)
+
+        logOutButton = Button(chooseStaffFunctionalityWindow, text="Log out",
+                              command=self.chooseFunctionalityWindowLogOutButtonClicked)
+        logOutButton.grid(row=2, column=3, sticky=E)
+
+    def searchStaffAnimal(self):
+        self.createSearchStaffAnimalWindow()
+        self.buildSearchStaffAnimalWinodw(self.searchStaffAnimalWindow)
+        self.chooseStaffFunctionalityWindow.withdraw()
+
+    def searchStaffShows(self):
+        self.createSearchStaffShowsWindow()
+        self.buildSearchStaffShowsWinodw(self.searchStaffShowsWindow)
+        self.chooseStaffFunctionalityWindow.withdraw()
+
+    # ==================  searchStaffAnimals ========================
+    def createSearchStaffAnimalWindow(self):
+        self.searchStaffAnimalWindow = Toplevel()
+        self.searchStaffAnimalWindow.title("Search for Animal")
+
+
+    def buildSearchStaffAnimalWinodw(self,searchStaffAnimalWindow):
+
+        # viewZoo label
+        viewZooLabel = Label(searchStaffAnimalWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # viewAnimal label
+        viewAnimalLabel = Label(searchStaffAnimalWindow, text="Animals", font="Verdana 10 bold ")
+        viewAnimalLabel.grid(row=1, column=3, sticky=W + E)
+
+        # Exhibit label
+        viewZooLabel = Label(searchStaffAnimalWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=5, )
+
+        # Exhibit Drop Down Button
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+        ExhibitList = [1, 2, 3]
+
+        self.Exhibit = StringVar()
+        self.Exhibit.set(ExhibitList[0])
+
+        departsFromOptionMenu = OptionMenu(searchStaffAnimalWindow, self.Exhibit, *ExhibitList)
+        departsFromOptionMenu.grid(row=1, column=7)
+
+        # Animal Name Label
+        viewZooLabel = Label(searchStaffAnimalWindow, text="Name", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=3, column=1, )
+
+        # Animal Name Entry
+        self.animalName = StringVar()
+        nameEntry = Entry(searchStaffAnimalWindow, textvariable=self.animalName, width=10)
+        nameEntry.grid(row=3, column=3, sticky=W + E)
+
+        # Animal Age Label
+        viewAge = Label(searchStaffAnimalWindow, text="Age", font="Verdana 10 bold ")
+        viewAge.grid(row=3, column=5)
+
+        # Animal Age Select
+        # Don't know
         #
-        # arrivesAtOptionMenu = OptionMenu(searchTrainWindow, self.arrivesAtSV, *stationNameList)
-        # arrivesAtOptionMenu.grid(row=3, column=2)
-        #
+<<<<<<< HEAD
+<<<<<<< HEAD
         # self.departureDateSV = StringVar()
         # self.departureDateSV.set("yyyy-mm-dd")
         # departureDateEntry = Entry(searchTrainWindow, textvariable=self.departureDateSV, width=20)
         # departureDateEntry.grid(row=4, column=2, sticky=W)
-#=========View Train Schedule Window============
+#=========View Exhibit Detail Window============
+=======
+=======
+>>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+        # Animal Min Max Label
+        minLabel = Label(searchStaffAnimalWindow, text="MIN", font="Verdana 10 bold ")
+        minLabel.grid(row=2, column=7)
 
-    def createViewTrainScheduleWindow(self):
-        self.viewTrainScheduleWindow = Toplevel()
-        self.viewTrainScheduleWindow.title("Train Sales System")
+        maxLabel = Label(searchStaffAnimalWindow, text="MAX", font="Verdana 10 bold ")
+        maxLabel.grid(row=2, column=8)
+
+        selectMinAge = Spinbox(searchStaffAnimalWindow, from_=0, to=100, width=5)
+        selectMinAge.grid(row=3, column=7)
+
+        selectMaxAge = Spinbox(searchStaffAnimalWindow, from_=0, to=100, width=5)
+        selectMaxAge.grid(row=3, column=8)
+
+        # Animal Species label
+        viewZooLabel = Label(searchStaffAnimalWindow, text="Species", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=5, column=1)
+
+        # Animal species Entry
+        self.species = StringVar()
+        speciesEntry = Entry(searchStaffAnimalWindow, textvariable=self.species, width=10)
+        speciesEntry.grid(row=5, column=3, sticky=W + E)
+
+        # Animal Type label
+        viewAnimalType = Label(searchStaffAnimalWindow, text="Type", font="Verdana 10 bold ")
+        viewAnimalType.grid(row=5, column=5, )
+
+        # Animal Type  Drop Down Box
+        ##不确定是不是这么写 从后端database调用
+        # ExhibitTuple = self.cursor.fetchall()
+
+        # ExhibitList = []
+        # for i in ExhibitTuple:
+        #     ExhibitList.append(i[0])
+
+        typeList = ['Fish', 'Frog', 'Lion']
+<<<<<<< HEAD
+=======
+
+        self.Type = StringVar()
+        self.Type.set(typeList[0])
+
+        typeMenu = OptionMenu(searchStaffAnimalWindow, self.Type, *typeList)
+        typeMenu.grid(row=5, column=7)
+
+        # Search Button
+        searchButton = Button(searchStaffAnimalWindow, text="Search", command=self.searchResultTable)
+        searchButton.grid(row=7, column=4)
+
+
+
+    #================Search  Staff Show ===========================
+
+    def createSearchStaffShowsWindow(self):
+        self.searchStaffShowsWindow = Toplevel()
+        self.searchStaffShowsWindow.title("exhibit History")
+
+    def buildSearchStaffShowsWinodw(self,searchStaffShowsWindow):
+        # viewZoo label
+        viewZooLabel = Label(searchStaffShowsWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # viewAnimal label
+        viewAnimalLabel = Label(searchStaffShowsWindow, text="   Staff- Show Historry", font="Verdana 10 bold ")
+        viewAnimalLabel.grid(row=1, column=3, sticky=W + E)
+
+    #=================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+
+    #=========View Train Schedule Window============
+>>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+
+        self.Type = StringVar()
+        self.Type.set(typeList[0])
+
+        typeMenu = OptionMenu(searchStaffAnimalWindow, self.Type, *typeList)
+        typeMenu.grid(row=5, column=7)
+
+        # Search Button
+        searchButton = Button(searchStaffAnimalWindow, text="Search", command=self.searchResultTable)
+        searchButton.grid(row=7, column=4)
+
+
+
+    #================Search  Staff Show ===========================
+
+    def createSearchStaffShowsWindow(self):
+        self.searchStaffShowsWindow = Toplevel()
+        self.searchStaffShowsWindow.title("exhibit History")
+
+    def buildSearchStaffShowsWinodw(self,searchStaffShowsWindow):
+        # viewZoo label
+        viewZooLabel = Label(searchStaffShowsWindow, text="Atlanta Zoo", font="Verdana 10 bold ")
+        viewZooLabel.grid(row=1, column=1, )
+
+        # viewAnimal label
+        viewAnimalLabel = Label(searchStaffShowsWindow, text="   Staff- Show Historry", font="Verdana 10 bold ")
+        viewAnimalLabel.grid(row=1, column=3, sticky=W + E)
+
+    #=================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+    # =================分割线=------------------------------------------------
+
+    #=========View Train Schedule Window============
+>>>>>>> bcdf2cb8a76f5a5fa8d96df77ea03c239ee25d12
+
+    def createviewExhibitWindow(self):
+        self.viewExhibitWindow = Toplevel()
+        self.viewExhibitWindow.title("Exhibit Detail")
 
     def buildViewTrainScheduleWindow(self,viewTrainScheduleWindow):
         # Title Label
@@ -2279,6 +3009,8 @@ class GTTrain:
         except:
             messagebox.showwarning('Error!','Cannot connect. Please check your internet connection.')
             return False
+
+
 
 a=GTTrain()
 a.db.close()

@@ -9,13 +9,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/baobaowoaini$Train_Ticket_System__1_.coverage" NAME="Train Ticket System (1) Coverage Results" MODIFIED="1542700495404" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pj" />
     <SUITE FILE_PATH="coverage/baobaowoaini$Train_Ticket_System.coverage" NAME="Train Ticket System Coverage Results" MODIFIED="1542679797834" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1270728436">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.9" value="1" />
           <entry key="project.opened" value="2" />
@@ -23,12 +24,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="759" />
+          <entry key="py" value="4613" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="759" />
+          <entry key="Python" value="4613" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="3" />
         </counts>
       </usages-collector>
     </session>
@@ -36,13 +47,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Train Ticket System.py">
+        <entry file="file://$PROJECT_DIR$/pj/Train Ticket System.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="417" column="21" selection-start-line="417" selection-start-column="21" selection-end-line="417" selection-end-column="21" />
+            <state relative-caret-position="234">
+              <caret line="597" column="19" lean-forward="true" selection-start-line="597" selection-start-column="19" selection-end-line="597" selection-end-column="19" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
+                <marker date="1542700495390" expanded="true" signature="16241:16250" ph="..." />
+                <marker date="1542700495390" expanded="true" signature="16241:17305" ph="..." />
+                <marker date="1542700495390" expanded="true" signature="18827:18837" ph="..." />
+                <marker date="1542700495390" expanded="true" signature="20773:20782" ph="..." />
+                <marker date="1542700495390" expanded="true" signature="22290:22299" ph="..." />
+                <marker date="1542700495390" expanded="true" signature="24984:26021" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Anaconda3/Lib/tkinter/ttk.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2530">
+              <caret line="1454" selection-start-line="1454" selection-end-line="1454" />
             </state>
           </provider>
         </entry>
@@ -53,6 +79,7 @@
     <findStrings>
       <find>searchexhibit</find>
       <find>animal</find>
+      <find>clicked</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -62,6 +89,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Train Ticket System.py" />
+        <option value="$PROJECT_DIR$/pj/Train Ticket System.py" />
       </list>
     </option>
   </component>
@@ -72,10 +100,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="4147" />
-    <option name="y" value="161" />
-    <option name="width" value="1535" />
-    <option name="height" value="830" />
+    <option name="x" value="4420" />
+    <option name="y" value="251" />
+    <option name="width" value="614" />
+    <option name="height" value="332" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -90,6 +118,11 @@
               <item name="baobaowoaini" type="b2602c69:ProjectViewProjectNode" />
               <item name="baobaowoaini" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="baobaowoaini" type="b2602c69:ProjectViewProjectNode" />
+              <item name="baobaowoaini" type="462c0819:PsiDirectoryNode" />
+              <item name="pj" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -98,6 +131,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/Nevaeh/Anaconda3/Lib/tkinter/ttk.py" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -112,7 +146,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.Train Ticket System (1)">
+    <configuration name="Train Ticket System (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="baobaowoaini" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pj" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pj/Train Ticket System.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Train Ticket System" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="baobaowoaini" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,8 +191,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.Train Ticket System" />
+      <item itemvalue="Python.Train Ticket System (1)" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Train Ticket System (1)" />
         <item itemvalue="Python.Train Ticket System" />
       </list>
     </recent_temporary>
@@ -172,8 +233,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
@@ -182,7 +243,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.329718" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -199,10 +260,40 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Train Ticket System.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="417" column="21" selection-start-line="417" selection-start-column="21" selection-end-line="417" selection-end-column="21" />
+        <state relative-caret-position="251">
+          <caret line="439" lean-forward="true" selection-start-line="439" selection-end-line="439" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/cs 425 AI/multiagent/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="126" column="39" lean-forward="true" selection-start-line="125" selection-start-column="4" selection-end-line="126" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/tkinter/ttk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2530">
+          <caret line="1454" selection-start-line="1454" selection-end-line="1454" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pj/Train Ticket System.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="597" column="19" lean-forward="true" selection-start-line="597" selection-start-column="19" selection-end-line="597" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1542700495390" expanded="true" signature="16241:16250" ph="..." />
+            <marker date="1542700495390" expanded="true" signature="16241:17305" ph="..." />
+            <marker date="1542700495390" expanded="true" signature="18827:18837" ph="..." />
+            <marker date="1542700495390" expanded="true" signature="20773:20782" ph="..." />
+            <marker date="1542700495390" expanded="true" signature="22290:22299" ph="..." />
+            <marker date="1542700495390" expanded="true" signature="24984:26021" ph="..." />
           </folding>
         </state>
       </provider>
